@@ -1,0 +1,7 @@
+{
+    "upgrade.acofi.fiery_upgrade": "Огненное улучшение",
+    "item.acofi.smithing_template.fiery_upgrade.applies_to": "Железному снаряжению",
+    "item.acofi.smithing_template.fiery_upgrade.ingredients": "Огненный слиток",
+    "item.acofi.smithing_template.fiery_upgrade.base_slot_description": "Поместите железный доспех, оружие или инструмент",
+    "item.acofi.smithing_template.fiery_upgrade.additions_slot_description": "Поместите огненный слиток"
+}

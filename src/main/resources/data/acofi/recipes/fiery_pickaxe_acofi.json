@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:smithing_transform",
+    "addition": {
+        "tag": "forge:ingots/fiery"
+    },
+    "base": {
+        "item": "minecraft:iron_pickaxe"
+    },
+    "result": {
+        "item": "twilightforest:fiery_pickaxe"
+    },
+    "template": {
+        "item": "acofi:fiery_upgrade_template"
+    }
+}

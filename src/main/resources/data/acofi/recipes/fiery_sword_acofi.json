@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:smithing_transform",
+    "addition": {
+        "tag": "forge:ingots/fiery"
+    },
+    "base": {
+        "item": "minecraft:iron_sword"
+    },
+    "result": {
+        "item": "twilightforest:fiery_sword"
+    },
+    "template": {
+        "item": "acofi:fiery_upgrade_template"
+    }
+}
