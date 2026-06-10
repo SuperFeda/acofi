@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "IGI",
+        "IWI",
+        "III"
+    ],
+    "key": {
+        "W": {
+            "tag": "twilightforest:logs"
+        },
+        "I": {
+            "item": "twilightforest:fiery_ingot"
+        },
+        "G": {
+            "item": "acofi:fiery_upgrade_template"
+        }
+    },
+    "result": {
+        "count": 2,
+        "id": "acofi:fiery_upgrade_template"
+    }
+}

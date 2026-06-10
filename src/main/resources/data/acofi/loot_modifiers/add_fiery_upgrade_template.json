@@ -1,0 +1,12 @@
+{
+    "type": "acofi:add_fiery_upgrade_template",
+    "conditions": [
+        {
+            "condition": "minecraft:inverted",
+            "term": {
+                "condition": "neoforge:loot_table_id",
+                "loot_table_id": "minecraft:empty"
+            }
+        }
+    ]
+}

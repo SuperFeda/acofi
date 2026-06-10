@@ -1,43 +1,45 @@
 package net.superfeda.acofi;
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-
-import net.minecraft.world.item.Item;
-
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
 
 import org.slf4j.Logger;
 
-import twilightforest.init.TFCreativeTabs;
+import com.mojang.logging.LogUtils;
 
+import net.minecraft.world.item.Item;
+
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+
+import twilightforest.init.TFCreativeTabs;
 
 @Mod(ACOFI.MOD_ID)
 public class ACOFI {
     public static final String MOD_ID = "acofi";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
-    public static final RegistryObject<Item> FIERY_UPGRADE_TEMPLATE = ITEMS.register("fiery_upgrade_template", FieryUpgradeTemplate::new);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
+    public static final DeferredHolder<Item, FieryUpgradeTemplate> FIERY_UPGRADE_TEMPLATE = ITEMS.registerItem("fiery_upgrade_template", properties -> new FieryUpgradeTemplate());
 
-    public ACOFI() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
+            DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, MOD_ID);
+    public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<AddTemplateLootModifier>> ADD_TEMPLATE_MODIFIER =
+            LOOT_MODIFIER_SERIALIZERS.register("add_fiery_upgrade_template", () -> AddTemplateLootModifier.CODEC.get());
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ACOFIConfig.SPEC);
+    public ACOFI(IEventBus modEventBus, ModContainer modContainer) {
+        modContainer.registerConfig(ModConfig.Type.COMMON, ACOFIConfig.SPEC);
 
         modEventBus.addListener(this::addCreative);
 
         ITEMS.register(modEventBus);
-
-        MinecraftForge.EVENT_BUS.register(this);
+        LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -46,4 +48,3 @@ public class ACOFI {
         }
     }
 }
-

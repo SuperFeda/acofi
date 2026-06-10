@@ -1,5 +1,6 @@
 {
     "upgrade.acofi.fiery_upgrade": "Fiery upgrade",
+    "item.acofi.fiery_upgrade_template": "Smithing template",
     "item.acofi.smithing_template.fiery_upgrade.applies_to": "Iron equipment",
     "item.acofi.smithing_template.fiery_upgrade.ingredients": "Fiery ingot",
     "item.acofi.smithing_template.fiery_upgrade.base_slot_description": "Place iron armor, weapon, or tool",

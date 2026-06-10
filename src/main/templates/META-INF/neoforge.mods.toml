@@ -3,29 +3,32 @@ loaderVersion="${loader_version_range}"
 license="${mod_license}"
 
 [[mods]]
-    modId="${mod_id}"
-    version="${mod_version}"
-    displayName="${mod_name}"
-    authors="${mod_authors}"
-    description='''${mod_description}'''
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="SuperFeda"
+description='''
+ACOFI is a mod that changes the creation of fiery equipment from the Twilight Forest
+'''
 
 [[dependencies.${mod_id}]]
-    modId="forge"
-    mandatory=true
-    versionRange="${forge_version_range}"
+    modId="neoforge"
+    type="required"
+    versionRange="[${neo_version},)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="minecraft"
-    mandatory=true
+    type="required"
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="twilightforest"
-    mandatory=true
+    type="required"
     versionRange="${twilightforest_version_range}"
     ordering="AFTER"
     side="BOTH"
+
